@@ -1,0 +1,39 @@
+{% extends 'basehtml/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="section-shop-online">
+    <div>
+        <a id="link-shop-online" href="{% url 'products'%}">
+            เลือกซื้อสินค้าออนไลน์
+        </a>
+        <samp>แล้วรับความช่วยเหลือจาก Specialist พร้อมบริการจัดส่งฟรีและอีกมากมาย</samp>
+    </div>
+</section>
+<section>
+    <div class="section-warapper item1">
+        <h3>ใบใหญ่</h3>
+        <p>
+            basket1
+        </p>
+    </div>
+    <div class="section-warapper item2">
+        <h3>ใบใหญ่</h3>
+        <p>
+            basket2
+        </p>
+    </div>
+    <div class="section-warapper item3">
+        <h3>ใบใหญ่</h3>
+        <p>
+            basket3
+        </p>
+    </div>
+    <div class="section-warapper item4">
+        <h3>ใบใหญ่</h3>
+        <p>
+            basket4
+        </p>
+    </div>
+</section>
+{% endblock %}
