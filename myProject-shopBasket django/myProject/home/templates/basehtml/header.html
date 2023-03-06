@@ -1,22 +1,25 @@
 {% load static %}
 <header class="header">
-    <div class="header-item">
+    <div class="header-item right-item">
         <a href="{% url 'home'%}">
             <img src="{% static 'home/basket_icon.png' %}" class="header-item-logo">
         </a>
     </div>
-    <div class="header-item">
+    <div class="header-item right-item">
         <a href="{% url 'home'%}" class="header-item">Home</a>
     </div>
-    <div class="header-item">
+    <div class="header-item right-item">
         <a href="{% url 'products'%}" class="header-item">Product</a>
     </div>
-    <div class="header-item">
+    <div class="header-item right-item">
         <a href="{% url 'about'%}" class="header-item">About</a>
     </div>
 
     </div>
     {% if user.is_authenticated %}
+    <div class="header-item left-item">
+        <a href="{% url 'carts' %}" class="header-item">Cart</a>
+    </div>
     <div class="header-item">
         <a href="{% url 'dashboard' %}" class="header-item">{{ user.username }}</a>
     </div>
@@ -24,7 +27,7 @@
         <a href="{% url 'logout' %}" class="header-item">Logout</a>
     </div>
     {% else %}
-    <div class="header-item">
+    <div class="header-item left-item">
         <a href="{% url 'login' %}" class="header-item">Login</a>
     </div>
     <div class="header-item">

@@ -8,9 +8,16 @@
     <div class="content-container">
         <div>
             <h4>สินค้า</h4>
-            
+            {% for cart in carts%}
+            <div>
+                <img src="#">
+                <div>product : {{ cart.product }}</div>
+                <div>quantity : {{ cart.quantity }}</div>
+                <div>author : {{ cart.author }}</div>
+            </div>
+            {% endfor%}
             <p>ยอดรวม</p>
-            <button class="button">ชำระเงิน</button>
+            <button>ชำระเงิน</button>
         </div>
     </div>
 </section>

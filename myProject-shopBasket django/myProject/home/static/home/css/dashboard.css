@@ -1,0 +1,21 @@
+.section-content-container{
+    color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+    transition: background-color 300ms;
+}
+
+.section-content{
+    color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+    transition: background-color 300ms;
+}

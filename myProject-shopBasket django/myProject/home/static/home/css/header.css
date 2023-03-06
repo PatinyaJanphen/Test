@@ -6,7 +6,13 @@
     display: flex;
     justify-content: flex-start;
     height: 50px;
-    
+}
+.right-item{
+    margin-right: 0px;
+}
+
+.left-item{
+    margin-left: auto;
 }
 
 .header-item{

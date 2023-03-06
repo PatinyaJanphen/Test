@@ -25,6 +25,9 @@
                 {% else %}
                     ลายละเอียดสินค้า: ไม่มี
                 {% endif %}
+                <button class="add-to-cart" data-product-id="{{ product.id }}">เพิ่มสินค้า</button>
+
+                <button onclick="test()">test</button>
             </div>
         </div>
         {% else %}
@@ -32,4 +35,28 @@
         {% endif %}
     </div>
 </section>
+
+<script>
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const productId = button.dataset.productId;
+      {#fetch('/add_to_cart/', {#}
+        fetch('/products/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: JSON.stringify({ product_id: productId })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // Optionally update the UI to show that the product was added to the cart
+      })
+      .catch(error => console.error(error));
+    });
+  });
+</script>
 {% endblock %}

@@ -7,7 +7,6 @@
     <div class="section-content-container">
         <h1>Dashboard : {{ user.username }}</h1>
         <a href="{% url 'dashboard' %}">dashboard</a>
-        <a href="{% url 'profile' %}">profile</a>
         <a href="{% url 'password_change' %}">password change</a>
         <form action="{% url 'profile' %}" method="post">
             <h5>My profile</h5>
