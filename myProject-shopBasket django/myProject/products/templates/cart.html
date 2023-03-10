@@ -8,14 +8,22 @@
     <div class="content-container">
         <div>
             <h4>สินค้า</h4>
+        {% if carts is not None %}
             {% for cart in carts%}
-            <div>
-                <img src="#">
-                <div>product : {{ cart.product }}</div>
-                <div>quantity : {{ cart.quantity }}</div>
-                <div>author : {{ cart.author }}</div>
+            <div class="product-cart">
+                <span>
+                    <img class="image-block" src="{{ cart.product.image.url }}">
+                </span>
+                <span>
+                    <div>product : {{ cart.product }}</div>
+                    <div>quantity : {{ cart.quantity }}</div>
+                    <div>author : {{ cart.author }}</div>
+                </span>
+
+               </div>
             </div>
-            {% endfor%}
+            {% endfor %}
+        {% endif %}
             <p>ยอดรวม</p>
             <button>ชำระเงิน</button>
         </div>

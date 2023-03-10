@@ -22,7 +22,7 @@
 
 .image-block {
     display: block;
-    max-width: 100%;
+    max-width: 10%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 12px;
@@ -40,4 +40,8 @@
 
 .title {
     text-align: center;
+}
+
+.img {
+    width : 10px;
 }

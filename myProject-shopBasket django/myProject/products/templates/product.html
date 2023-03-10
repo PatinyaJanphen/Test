@@ -8,55 +8,33 @@
     <div class="content-container">
         {% if product is not None %}
             <div class="grid">
-                <img src="{{ product.image.url }}">
+                <img class="image-block" src="{{ product.image.url }}">
                 <div>
                     <h3>{{ product.name_product }}</h3>
-                {% if product.special_price is not None %}
-                    <p>
-                        <span>{{ product.special_price|floatformat:'g' }} บาท จาก</span>
-                        <del class="text-gray">{{ product.price|floatformat:'g' }}</del>
-                    </p>
-                {% else %}
-                    <p>ราคา {{ product.price|floatformat:'g' }} บาท</p>
-                {% endif %}
+                    {% if product.special_price is not None %}
+                        <p>
+                            <span>{{ product.special_price|floatformat:'g' }} บาท จาก</span>
+                            <del class="text-gray">{{ product.price|floatformat:'g' }}</del>
+                        </p>
+                    {% else %}
+                        <p>ราคา {{ product.price|floatformat:'g' }} บาท</p>
+                    {% endif %}
 
-                {% if product.description is not None %}
-                    ลายละเอียดสินค้า: {{ product.description }}
-                {% else %}
-                    ลายละเอียดสินค้า: ไม่มี
-                {% endif %}
-                <button class="add-to-cart" data-product-id="{{ product.id }}">เพิ่มสินค้า</button>
-
-                <button onclick="test()">test</button>
+                    {% if product.description is not None %}
+                        <p>ลายละเอียดสินค้า: {{ product.description }}</p>
+                    {% else %}
+                        <p>ลายละเอียดสินค้า: ไม่มี</p>
+                    {% endif %}
+                    <form id="add-to-cart-form" method="post" action="{% url 'add-to-cart' product.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <button type="submit" class="add-to-cart">เพิ่มสินค้า</button>
+                    </form>
+                </div>
             </div>
-        </div>
         {% else %}
-            ไม่พบสินค้า
+            <p>ไม่พบสินค้า</p>
         {% endif %}
     </div>
 </section>
-
-<script>
-  const addToCartButtons = document.querySelectorAll('.add-to-cart');
-  addToCartButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const productId = button.dataset.productId;
-      {#fetch('/add_to_cart/', {#}
-        fetch('/products/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': '{{ csrf_token }}'
-        },
-        body: JSON.stringify({ product_id: productId })
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        // Optionally update the UI to show that the product was added to the cart
-      })
-      .catch(error => console.error(error));
-    });
-  });
-</script>
 {% endblock %}
